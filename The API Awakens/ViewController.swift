@@ -8,11 +8,25 @@
 
 import UIKit
 
+let client = SwapiAPIClient()
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        client.getData(type: .character) { [weak self] artist, error in
+            if let error = error {
+                print(error)
+            } else {
+                
+                for each in artist {
+                    print("\(each.name) has a height of \(each.heightCm)")
+                }
+            }
+        }
+    
     }
 
     override func didReceiveMemoryWarning() {

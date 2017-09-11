@@ -12,6 +12,12 @@
 		182472EA1F669AAD00680E3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182472E81F669AAD00680E3A /* Main.storyboard */; };
 		182472EC1F669AAD00680E3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182472EB1F669AAD00680E3A /* Assets.xcassets */; };
 		182472EF1F669AAD00680E3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182472ED1F669AAD00680E3A /* LaunchScreen.storyboard */; };
+		182472F91F669C9300680E3A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182472F81F669C9300680E3A /* Endpoint.swift */; };
+		182472FC1F66BA8900680E3A /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182472FB1F66BA8900680E3A /* JSONDownloader.swift */; };
+		182472FE1F66BB9800680E3A /* SwapiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182472FD1F66BB9800680E3A /* SwapiError.swift */; };
+		182473001F66BEF600680E3A /* SwapiAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182472FF1F66BEF600680E3A /* SwapiAPIClient.swift */; };
+		182473021F66CDAE00680E3A /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182473011F66CDAE00680E3A /* Characters.swift */; };
+		182473041F66DDB600680E3A /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182473031F66DDB600680E3A /* Hardware.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		182472EB1F669AAD00680E3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		182472EE1F669AAD00680E3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		182472F01F669AAD00680E3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		182472F81F669C9300680E3A /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		182472FB1F66BA8900680E3A /* JSONDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
+		182472FD1F66BB9800680E3A /* SwapiError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiError.swift; sourceTree = "<group>"; };
+		182472FF1F66BEF600680E3A /* SwapiAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiAPIClient.swift; sourceTree = "<group>"; };
+		182473011F66CDAE00680E3A /* Characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
+		182473031F66DDB600680E3A /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,8 @@
 		182472E31F669AAC00680E3A /* The API Awakens */ = {
 			isa = PBXGroup;
 			children = (
+				182472FA1F66BA7200680E3A /* Networking */,
+				182472F61F669C5B00680E3A /* Models */,
 				182472E41F669AAC00680E3A /* AppDelegate.swift */,
 				182472E61F669AAC00680E3A /* ViewController.swift */,
 				182472E81F669AAD00680E3A /* Main.storyboard */,
@@ -62,6 +76,34 @@
 				182472F01F669AAD00680E3A /* Info.plist */,
 			);
 			path = "The API Awakens";
+			sourceTree = "<group>";
+		};
+		182472F61F669C5B00680E3A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				182472F71F669C6D00680E3A /* Endpoint */,
+				182473011F66CDAE00680E3A /* Characters.swift */,
+				182473031F66DDB600680E3A /* Hardware.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		182472F71F669C6D00680E3A /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				182472F81F669C9300680E3A /* Endpoint.swift */,
+			);
+			name = Endpoint;
+			sourceTree = "<group>";
+		};
+		182472FA1F66BA7200680E3A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				182472FB1F66BA8900680E3A /* JSONDownloader.swift */,
+				182472FF1F66BEF600680E3A /* SwapiAPIClient.swift */,
+				182472FD1F66BB9800680E3A /* SwapiError.swift */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182473001F66BEF600680E3A /* SwapiAPIClient.swift in Sources */,
+				182473021F66CDAE00680E3A /* Characters.swift in Sources */,
+				182472FC1F66BA8900680E3A /* JSONDownloader.swift in Sources */,
 				182472E71F669AAC00680E3A /* ViewController.swift in Sources */,
+				182472F91F669C9300680E3A /* Endpoint.swift in Sources */,
+				182472FE1F66BB9800680E3A /* SwapiError.swift in Sources */,
 				182472E51F669AAC00680E3A /* AppDelegate.swift in Sources */,
+				182473041F66DDB600680E3A /* Hardware.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
