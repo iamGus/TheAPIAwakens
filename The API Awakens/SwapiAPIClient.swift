@@ -12,7 +12,7 @@ import Foundation
 class SwapiAPIClient {
     let downloader = JSONDownloader()
     
-    func getData(type: StarWars, completion: @escaping ([Characters], SwapiError?) -> Void) {
+    func getData(type: StarWarsEndpoint, completion: @escaping ([StarWarsTypes], SwapiError?) -> Void) {
         let endpoint = type
         print(endpoint.request)
         
@@ -30,8 +30,14 @@ class SwapiAPIClient {
                     return
                 }
                
-                let starwarsType = results.flatMap { Characters(json: $0) }
-                completion(starwarsType, nil)
+                if type == .character {
+                    let starwarsType = results.flatMap { Characters(json: $0) }
+                    completion(starwarsType, nil)
+                } else {
+                    let starwarsType = results.flatMap { Hardware(json: $0, hardwareType: type) }
+                    completion(starwarsType, nil)
+                }
+                
                 
             }
         }

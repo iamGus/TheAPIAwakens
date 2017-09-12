@@ -32,13 +32,13 @@ extension Endpoint {
     }
 }
 
-enum StarWars {
+enum StarWarsEndpoint {
     case character
     case starship
     case vehicles
 }
 
-extension StarWars: Endpoint {
+extension StarWarsEndpoint: Endpoint {
     
     var scheme: String {
         return "https"

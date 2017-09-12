@@ -18,6 +18,10 @@
 		182473001F66BEF600680E3A /* SwapiAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182472FF1F66BEF600680E3A /* SwapiAPIClient.swift */; };
 		182473021F66CDAE00680E3A /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182473011F66CDAE00680E3A /* Characters.swift */; };
 		182473041F66DDB600680E3A /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182473031F66DDB600680E3A /* Hardware.swift */; };
+		186DCA831F67C5EA003C1E75 /* StarWarsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DCA821F67C5E9003C1E75 /* StarWarsTypes.swift */; };
+		186DCA861F67E0C6003C1E75 /* CharactersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DCA851F67E0C6003C1E75 /* CharactersDataSource.swift */; };
+		186DCA881F67E0DA003C1E75 /* HardwareDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DCA871F67E0DA003C1E75 /* HardwareDataSource.swift */; };
+		186DCA8A1F67E706003C1E75 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DCA891F67E706003C1E75 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		182472FF1F66BEF600680E3A /* SwapiAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiAPIClient.swift; sourceTree = "<group>"; };
 		182473011F66CDAE00680E3A /* Characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		182473031F66DDB600680E3A /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
+		186DCA821F67C5E9003C1E75 /* StarWarsTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarWarsTypes.swift; sourceTree = "<group>"; };
+		186DCA851F67E0C6003C1E75 /* CharactersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersDataSource.swift; sourceTree = "<group>"; };
+		186DCA871F67E0DA003C1E75 /* HardwareDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HardwareDataSource.swift; sourceTree = "<group>"; };
+		186DCA891F67E706003C1E75 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +74,11 @@
 		182472E31F669AAC00680E3A /* The API Awakens */ = {
 			isa = PBXGroup;
 			children = (
+				186DCA8B1F67E9C8003C1E75 /* Controllers */,
 				182472FA1F66BA7200680E3A /* Networking */,
+				186DCA841F67E094003C1E75 /* Data Sources */,
 				182472F61F669C5B00680E3A /* Models */,
 				182472E41F669AAC00680E3A /* AppDelegate.swift */,
-				182472E61F669AAC00680E3A /* ViewController.swift */,
 				182472E81F669AAD00680E3A /* Main.storyboard */,
 				182472EB1F669AAD00680E3A /* Assets.xcassets */,
 				182472ED1F669AAD00680E3A /* LaunchScreen.storyboard */,
@@ -81,19 +90,12 @@
 		182472F61F669C5B00680E3A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				182472F71F669C6D00680E3A /* Endpoint */,
+				182472F81F669C9300680E3A /* Endpoint.swift */,
+				186DCA821F67C5E9003C1E75 /* StarWarsTypes.swift */,
 				182473011F66CDAE00680E3A /* Characters.swift */,
 				182473031F66DDB600680E3A /* Hardware.swift */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		182472F71F669C6D00680E3A /* Endpoint */ = {
-			isa = PBXGroup;
-			children = (
-				182472F81F669C9300680E3A /* Endpoint.swift */,
-			);
-			name = Endpoint;
 			sourceTree = "<group>";
 		};
 		182472FA1F66BA7200680E3A /* Networking */ = {
@@ -104,6 +106,24 @@
 				182472FD1F66BB9800680E3A /* SwapiError.swift */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		186DCA841F67E094003C1E75 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				186DCA851F67E0C6003C1E75 /* CharactersDataSource.swift */,
+				186DCA871F67E0DA003C1E75 /* HardwareDataSource.swift */,
+			);
+			name = "Data Sources";
+			sourceTree = "<group>";
+		};
+		186DCA8B1F67E9C8003C1E75 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				182472E61F669AAC00680E3A /* ViewController.swift */,
+				186DCA891F67E706003C1E75 /* DetailsViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,13 +200,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				182473001F66BEF600680E3A /* SwapiAPIClient.swift in Sources */,
+				186DCA881F67E0DA003C1E75 /* HardwareDataSource.swift in Sources */,
 				182473021F66CDAE00680E3A /* Characters.swift in Sources */,
 				182472FC1F66BA8900680E3A /* JSONDownloader.swift in Sources */,
 				182472E71F669AAC00680E3A /* ViewController.swift in Sources */,
+				186DCA861F67E0C6003C1E75 /* CharactersDataSource.swift in Sources */,
+				186DCA831F67C5EA003C1E75 /* StarWarsTypes.swift in Sources */,
 				182472F91F669C9300680E3A /* Endpoint.swift in Sources */,
 				182472FE1F66BB9800680E3A /* SwapiError.swift in Sources */,
 				182472E51F669AAC00680E3A /* AppDelegate.swift in Sources */,
 				182473041F66DDB600680E3A /* Hardware.swift in Sources */,
+				186DCA8A1F67E706003C1E75 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +374,7 @@
 				182472F51F669AAD00680E3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

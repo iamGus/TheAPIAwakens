@@ -28,7 +28,7 @@ class Characters {
     }
 }
 
-extension Characters {
+extension Characters: StarWarsTypes {
     convenience init?(json: [String: Any]) {
         
         struct Key {
