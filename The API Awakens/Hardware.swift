@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+// Class model to contain Starships and Vehicles
 
 class Hardware {
     let name: String
@@ -34,6 +34,7 @@ class Hardware {
     }
 }
 
+// To put json file through to make into Hardware type
 extension Hardware: StarWarsTypes {
     convenience init?(json: [String: Any], hardwareType: StarWarsEndpoint) {
         

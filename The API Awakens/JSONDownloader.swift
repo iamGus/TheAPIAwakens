@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Try and download and return JSON file
+
 class JSONDownloader {
     let session: URLSession
     

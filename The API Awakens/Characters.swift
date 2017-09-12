@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Class model to contain Star Wars lifeforms and robots!
+
 class Characters {
     let name: String
     let born: String
@@ -28,6 +30,7 @@ class Characters {
     }
 }
 
+// To put json file through to make into Characters type
 extension Characters: StarWarsTypes {
     convenience init?(json: [String: Any]) {
         

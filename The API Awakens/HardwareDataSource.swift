@@ -8,11 +8,23 @@
 
 import Foundation
 
+// Hold datasource for Starships and Vechicles
+
 class HardwareDataSource {
     
-    private var data = [Hardware]()
+    var data = [Hardware]()
     
+    // Update data
     func update(with hardware: [Hardware]) {
         data = hardware
+    }
+    
+    // Return string of names for picker
+    func returnArrayForPicker() -> [String] {
+        var arrayOfNames = [""]
+        for eachHardware in data {
+            arrayOfNames.append(eachHardware.name)
+        }
+        return arrayOfNames
     }
 }

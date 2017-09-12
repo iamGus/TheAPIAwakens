@@ -8,12 +8,24 @@
 
 import Foundation
 
+// Hold dataSource for lifefoms and robots!
+
 class CharactersDataSource {
     
     private var data = [Characters]()
     
+    // Update data
     func update(with characters: [Characters]) {
         data = characters
+    }
+    
+    // Return string of names for picker
+    func returnArrayForPicker() -> [String] {
+        var arrayOfNames = [""]
+        for eachHardware in data {
+            arrayOfNames.append(eachHardware.name)
+        }
+        return arrayOfNames
     }
 }
 

@@ -77,6 +77,7 @@
 				186DCA8B1F67E9C8003C1E75 /* Controllers */,
 				182472FA1F66BA7200680E3A /* Networking */,
 				186DCA841F67E094003C1E75 /* Data Sources */,
+				186DCA8E1F67EB4B003C1E75 /* View */,
 				182472F61F669C5B00680E3A /* Models */,
 				182472E41F669AAC00680E3A /* AppDelegate.swift */,
 				182472E81F669AAD00680E3A /* Main.storyboard */,
@@ -124,6 +125,13 @@
 				186DCA891F67E706003C1E75 /* DetailsViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		186DCA8E1F67EB4B003C1E75 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
