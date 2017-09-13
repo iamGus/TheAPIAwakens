@@ -46,6 +46,7 @@ extension Hardware: StarWarsTypes {
             static let swapiCrew = "crew"
         }
         
+        // Swapi API names the class key differently depending on starship or vehicles
         var classType: String {
             switch hardwareType {
             case .starship: return "starship_class"

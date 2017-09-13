@@ -11,20 +11,38 @@ import UIKit
 
 
 class ViewController: UIViewController {
+    
+    //outlets
+    @IBOutlet weak var charactersLabel: UIButton!
+    @IBOutlet weak var vehiclesLabel: UIButton!
+    @IBOutlet weak var starshipsLabel: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-   
+        // Do any additional setup after loading the view, typically fvar a nib.
     
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+   
+    // When segue detected find out which segue and set detailsViewController StarWarsType up
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if let destViewController = segue.destination as? DetailsViewController {
+            if segue.identifier == "characters" {
+                destViewController.starWarsTypeSelected = .character
+            } else if segue.identifier == "vehicles" {
+                destViewController.starWarsTypeSelected = .vehicles
+            } else if segue.identifier == "starships" {
+                destViewController.starWarsTypeSelected = .starship
+            }
+        }
     }
-
+    
+    
+    //Unwind details beck button to home view controller
+    @IBAction func unwindToThisViewController(segue: UIStoryboardSegue) {
+      
+    }
 
 }
 

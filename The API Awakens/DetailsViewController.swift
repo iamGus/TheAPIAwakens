@@ -10,11 +10,13 @@ import UIKit
 
 class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    //Outlets
     @IBOutlet weak var pickerView: UIPickerView!
+
     
     // Property setup
     let client = SwapiAPIClient()
-    let starWarsTypeSelected: StarWarsEndpoint = .vehicles
+    var starWarsTypeSelected: StarWarsEndpoint?
     var hardwareDataSource = HardwareDataSource()
     let charactersDataSource = CharactersDataSource()
     let numberOfPickerColumns = 1
@@ -57,6 +59,9 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     // MARK: - Calls API and puts data into datasource
     func GetDataAndUpdateDataSource() {
+        guard let starWarsTypeSelected = starWarsTypeSelected else {
+            return print("No type selected") //NEED BETTER ERROR HANDLING
+        }
         client.getData(type: starWarsTypeSelected) { [weak self] starWarsType, error in
             if let error = error {
                 print(error) // NEED MORE ERROR POPUPS
@@ -82,6 +87,12 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             }
         }
     }
+    
+    
+    @IBAction func backButton() {
+    }
+    
+ 
 
  // MARK: - Picker view Data Sources and delegates
     
