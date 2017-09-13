@@ -27,4 +27,9 @@ class HardwareDataSource {
         }
         return arrayOfNames
     }
+    
+    //Return request Hardware details from picker row number
+    func returnSingleCharacter(pickerRow row: Int) -> Hardware {
+        return data[row-1] //row munis one as of array starting 0
+    }
 }

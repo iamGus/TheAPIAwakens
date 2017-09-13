@@ -27,5 +27,10 @@ class CharactersDataSource {
         }
         return arrayOfNames
     }
+    
+    //Return request Character details from picker row number
+    func returnSingleCharacter(pickerRow row: Int) -> Characters {
+        return data[row-1] //row munis one as of array starting 0
+    }
 }
 
