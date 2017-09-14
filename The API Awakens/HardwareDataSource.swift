@@ -28,6 +28,16 @@ class HardwareDataSource {
         return arrayOfNames
     }
     
+    // Return name and size for quick facts
+    func nameAndSizeForFacts() -> [String: Double] {
+        var nameAndSize = [String: Double]()
+        for eachHardware in data {
+            nameAndSize[eachHardware.name] = eachHardware.lengthMeters
+        }
+        
+        return nameAndSize
+    }
+    
     //Return request Hardware details from picker row number
     func returnSingleCharacter(pickerRow row: Int) -> Hardware {
         return data[row-1] //row munis one as of array starting 0

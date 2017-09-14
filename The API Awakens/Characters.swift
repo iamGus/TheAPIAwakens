@@ -14,17 +14,26 @@ class Characters {
     let name: String
     let born: String
     let home: String
-    let heightCm: Int
+    let heightMeters: Double
     let eyes: String
     let hair: String
     
     init(name: String, born: String, home: String, heightCm: String, eyes: String, hair: String) {
         
+      
+       let converttometers = Double(heightCm) ?? 0.0 //Try and convert string to Double otherwise value 0
+        self.heightMeters = converttometers / 100 // Convert value to meters
         
-        self.heightCm = Int(heightCm) ?? 0 //Try and convert string to Int otherwise value 0
+        switch home {
+            case "https://swapi.co/api/planets/1/": self.home = "Tatooine"
+            case "https://swapi.co/api/planets/8/": self.home = "Naboo"
+            case "https://swapi.co/api/planets/2/": self.home = "Alderaan"
+            case "https://swapi.co/api/planets/20/": self.home = "Stewjon"
+            default: self.home = "Unknown"
+        }
+        
         self.name = name
         self.born = born
-        self.home = home
         self.eyes = eyes
         self.hair = hair
     }
@@ -55,4 +64,6 @@ extension Characters: StarWarsTypes {
         self.init(name: swapiName, born: swapiBorn, home: swapiHome, heightCm: swapiHeight, eyes: swapiEyes, hair: swapiHair)
     }
 }
+
+
 

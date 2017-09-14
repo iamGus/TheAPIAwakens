@@ -27,6 +27,8 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet weak var heading5Label: UILabel!
     @IBOutlet weak var heading5ResultsLabel: UILabel!
     
+    @IBOutlet weak var quickFactsSmallestLabel: UILabel!
+    @IBOutlet weak var quickFactsLargestLabel: UILabel!
     
     
 
@@ -61,6 +63,11 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         
         //SetupPicker
         pickerData = hardwareDataSource.returnArrayForPicker()
+        
+        //Pass hardware data to Quick Facts function
+        let dataForQuickFacts = hardwareDataSource.nameAndSizeForFacts()
+        quickFactsSetup(with: dataForQuickFacts)
+        
         //Assign delegate and datasource for picker
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -71,6 +78,11 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         
         //SetupPicker
         pickerData = charactersDataSource.returnArrayForPicker()
+        
+        //Pass character data to Quick Facts function
+        let dataForQuickFacts = charactersDataSource.nameAndSizeForFacts()
+        quickFactsSetup(with: dataForQuickFacts)
+        
         //Assign delegate and datasource for picker
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -152,23 +164,44 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             TypeNameLabel.text = singleCharacterDetails.name
             label1Results.text = singleCharacterDetails.born
             heading2ResultsLabel.text = singleCharacterDetails.home
-            heading3ResultsLabel.text = "\(singleCharacterDetails.heightCm)m"
+            heading3ResultsLabel.text = "\(singleCharacterDetails.heightMeters)m"
             heading4ResultsLabel.text = singleCharacterDetails.eyes
             heading5ResultsLabel.text = singleCharacterDetails.hair
             
         } else {
             
             let singleHardwareDetails = hardwareDataSource.returnSingleCharacter(pickerRow: row)
+                //Check if cost is 0, if it is then update label to be "Unknown", otherwise return cost
+                if singleHardwareDetails.cost == 0 {
+                   heading2ResultsLabel.text = "Unknown"
+                } else {
+                    heading2ResultsLabel.text = String(singleHardwareDetails.cost)
+                }
             TypeNameLabel.text = singleHardwareDetails.name
             label1Results.text = singleHardwareDetails.make
-            heading2ResultsLabel.text = String(singleHardwareDetails.cost)
             heading3ResultsLabel.text = "\(singleHardwareDetails.lengthMeters)m"
             heading4ResultsLabel.text = singleHardwareDetails.hardwareClass
             heading5ResultsLabel.text = String(singleHardwareDetails.crew)
         }
         
+    }
+    
+    // Quick facts bar setup
+    func quickFactsSetup(with dictionary: [String: Double]) {
+        var smallest = ""
+        var largest = ""
+        for (key, value) in dictionary {
+            if value == dictionary.values.min() {
+                smallest = key
+            } else if value == dictionary.values.max() {
+                largest = key
+            } else {
+                
+            }
+        }
         
-        
+        quickFactsSmallestLabel.text = smallest
+        quickFactsLargestLabel.text = largest
     }
  
 

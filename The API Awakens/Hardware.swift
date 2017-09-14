@@ -15,7 +15,7 @@ class Hardware {
     let type: StarWarsEndpoint
     let make: String
     let cost: Int
-    let lengthMeters: Int
+    let lengthMeters: Double
     let hardwareClass: String
     let crew: Int
     
@@ -24,7 +24,7 @@ class Hardware {
         //Try and convert string to Int otherwise value 0
         self.cost = Int(cost) ?? 0
         self.crew = Int(crew) ?? 0
-        self.lengthMeters = Int(lengthMeters) ?? 0
+        self.lengthMeters = Double(lengthMeters) ?? 0
         
         self.name = name
         self.type = type

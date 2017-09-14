@@ -22,10 +22,19 @@ class CharactersDataSource {
     // Return string of names for picker
     func returnArrayForPicker() -> [String] {
         var arrayOfNames = [""]
-        for eachHardware in data {
-            arrayOfNames.append(eachHardware.name)
+        for eachCharacter in data {
+            arrayOfNames.append(eachCharacter.name)
         }
         return arrayOfNames
+    }
+    
+    // Return name and size for quick facts
+    func nameAndSizeForFacts() -> [String: Double] {
+        var nameAndSize = [String: Double]()
+        for eachCharacter in data {
+            nameAndSize[eachCharacter.name] = eachCharacter.heightMeters
+        }
+        return nameAndSize
     }
     
     //Return request Character details from picker row number
