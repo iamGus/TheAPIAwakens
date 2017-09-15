@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1816293C1F6ADB61003A7483 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816293B1F6ADB61003A7483 /* PopupViewController.swift */; };
 		182472E51F669AAC00680E3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182472E41F669AAC00680E3A /* AppDelegate.swift */; };
 		182472E71F669AAC00680E3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182472E61F669AAC00680E3A /* ViewController.swift */; };
 		182472EA1F669AAD00680E3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182472E81F669AAD00680E3A /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1816293B1F6ADB61003A7483 /* PopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		182472E11F669AAC00680E3A /* The API Awakens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The API Awakens.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		182472E41F669AAC00680E3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		182472E61F669AAC00680E3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				182472E61F669AAC00680E3A /* ViewController.swift */,
 				186DCA891F67E706003C1E75 /* DetailsViewController.swift */,
+				1816293B1F6ADB61003A7483 /* PopupViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				182472E51F669AAC00680E3A /* AppDelegate.swift in Sources */,
 				182473041F66DDB600680E3A /* Hardware.swift in Sources */,
 				186DCA8A1F67E706003C1E75 /* DetailsViewController.swift in Sources */,
+				1816293C1F6ADB61003A7483 /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

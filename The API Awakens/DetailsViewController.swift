@@ -30,7 +30,12 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet weak var quickFactsSmallestLabel: UILabel!
     @IBOutlet weak var quickFactsLargestLabel: UILabel!
     
+    //English and Metric outlets
+    @IBOutlet weak var metricLabel: UIButton!
+
+    @IBOutlet weak var englishLabel: UIButton!
     
+    @IBOutlet weak var heading3ResultsFeetLabel: UILabel!
 
     
     // Property setup
@@ -160,6 +165,7 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             return //ERROR NO TYPE SELECTED
         }
         if starWarsTypeSelected == .character {
+            
             let singleCharacterDetails = charactersDataSource.returnSingleCharacter(pickerRow: row)
             TypeNameLabel.text = singleCharacterDetails.name
             label1Results.text = singleCharacterDetails.born
@@ -167,6 +173,7 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             heading3ResultsLabel.text = "\(singleCharacterDetails.heightMeters)m"
             heading4ResultsLabel.text = singleCharacterDetails.eyes
             heading5ResultsLabel.text = singleCharacterDetails.hair
+            heading3ResultsFeetLabel.text = "\(singleCharacterDetails.heightFeet)ft"
             
         } else {
             
@@ -182,6 +189,7 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             heading3ResultsLabel.text = "\(singleHardwareDetails.lengthMeters)m"
             heading4ResultsLabel.text = singleHardwareDetails.hardwareClass
             heading5ResultsLabel.text = String(singleHardwareDetails.crew)
+            heading3ResultsFeetLabel.text = "\(singleHardwareDetails.lengthFeet)ft"
         }
         
     }
@@ -225,5 +233,28 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         }
         return// Add code in here to update details section
     }
+    
+    //Change units
+    @IBAction func metricEnglishChange(_ sender: UIButton) {
+        if sender == englishLabel {
+            heading3ResultsLabel.isHidden = true
+            heading3ResultsFeetLabel.isHidden = false
+            //sender.setTitleColor(UIColor.white, for: UIControlState.selected)
+            englishLabel.titleLabel?.textColor = UIColor.white
+            metricLabel.titleLabel?.textColor = UIColor.darkGray
+            
+        } else if sender == metricLabel {
+            metricLabel.titleLabel?.textColor = UIColor.white
+            heading3ResultsLabel.isHidden = false
+            heading3ResultsFeetLabel.isHidden = true
+            englishLabel.titleLabel?.textColor = UIColor.darkGray
+        }
+    }
+    
+    //Unwind popup to Details, if exchange rate then show rate and change rate button colours
+    @IBAction func unwindToDetailsFromPopup(segue: UIStoryboardSegue) {
+        
+    }
+    
 
 }

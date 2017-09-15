@@ -15,6 +15,10 @@ class Characters {
     let born: String
     let home: String
     let heightMeters: Double
+    var heightFeet: Double {
+        let convertTometers = heightMeters * 3.2808 // convert meters to feet
+        return Double(round(100*convertTometers)/100)//round to two didgets precision
+    }
     let eyes: String
     let hair: String
     
@@ -24,6 +28,8 @@ class Characters {
        let converttometers = Double(heightCm) ?? 0.0 //Try and convert string to Double otherwise value 0
         self.heightMeters = converttometers / 100 // Convert value to meters
         
+        //Changing home data from url to planet name
+        //V2 addition: note below could be done differently by calling API and storing planet so that if planet allready been called before it does not make another network request but uses already downlaoded data.
         switch home {
             case "https://swapi.co/api/planets/1/": self.home = "Tatooine"
             case "https://swapi.co/api/planets/8/": self.home = "Naboo"

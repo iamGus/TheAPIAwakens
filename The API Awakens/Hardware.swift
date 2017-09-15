@@ -16,6 +16,10 @@ class Hardware {
     let make: String
     let cost: Int
     let lengthMeters: Double
+    var lengthFeet: Double {
+        let convertTometers = lengthMeters * 3.2808 // convert meters to feet
+        return Double(round(100*convertTometers)/100)//round to two didgets precision
+    }
     let hardwareClass: String
     let crew: Int
     
