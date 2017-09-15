@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol dataEnteredDelegate {
+    func setExchangeRate(of rate: Double, unit: Int)
+}
+
 class PopupViewController: UIViewController {
 
     @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var invalidRateLabel: UILabel!
+    
+    var delegate: dataEnteredDelegate?
+    var currentHardwareUnit: Int = 0 //Keep track of unit cost, default 0 as done guard let checks on details before passing to this property
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +35,7 @@ class PopupViewController: UIViewController {
     @IBAction func submitAndClosePopup(_ sender: Any) {
         if let textField = textField.text, let textFieldIsDouble = Double(textField) {
             print("yay its a number: \(textFieldIsDouble)")
+            delegate?.setExchangeRate(of: textFieldIsDouble, unit: currentHardwareUnit)
             self.performSegue(withIdentifier: "unwindToDetails", sender: self)
         } else if textField.text == "" {
             print("Boo tahts not a number")

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, dataEnteredDelegate {
     
     //Outlets
     @IBOutlet weak var pickerView: UIPickerView!
@@ -32,11 +32,14 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     //English and Metric outlets
     @IBOutlet weak var metricLabel: UIButton!
-
     @IBOutlet weak var englishLabel: UIButton!
-    
     @IBOutlet weak var heading3ResultsFeetLabel: UILabel!
 
+    // Credit and USD button outlets
+    @IBOutlet weak var creditsButtonLabel: UIButton!
+    @IBOutlet weak var usdButtonLabel: UIButton!
+    @IBOutlet weak var heading2ResultsUSDLabel: UILabel!
+    
     
     // Property setup
     let client = SwapiAPIClient()
@@ -48,6 +51,12 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     // Picker properties
     var pickerData: [String] = [String]()
     
+    // Value from Exchange popup
+    var valueSentFromPopup: Double?
+    
+    // Value of current cost of corrent selected hardware
+    var currentHardwareCostUnits: Int?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +66,7 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         
         //Calls API and puts data into datasource
         GetDataAndUpdateDataSource()
+        
     
     }
 
@@ -143,6 +153,8 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             heading3Label.text = "Height"
             heading4Label.text = "Eyes"
             heading5Label.text = "Hair"
+            currencyButtons(isHidden: true) // hide currency buttons as not needed
+            sizeButtons(isHidden: true)
         } else {
             // Check if Starship or Vehicles and set top heading type
             if starWarsTypeSelected == .starship {
@@ -156,10 +168,12 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             heading3Label.text = "Length"
             heading4Label.text = "Class"
             heading5Label.text = "Crew"
+            currencyButtons(isHidden: true)
+            sizeButtons(isHidden: true)
         }
     }
     
-    // MARK: - updating labels
+    // MARK: - updating labels when a row is selected in picker
     func updateLabels(pickerRow row: Int) {
         guard let starWarsTypeSelected = starWarsTypeSelected else {
             return //ERROR NO TYPE SELECTED
@@ -174,6 +188,7 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             heading4ResultsLabel.text = singleCharacterDetails.eyes
             heading5ResultsLabel.text = singleCharacterDetails.hair
             heading3ResultsFeetLabel.text = "\(singleCharacterDetails.heightFeet)ft"
+            sizeButtons(isHidden: false)
             
         } else {
             
@@ -181,8 +196,17 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                 //Check if cost is 0, if it is then update label to be "Unknown", otherwise return cost
                 if singleHardwareDetails.cost == 0 {
                    heading2ResultsLabel.text = "Unknown"
-                } else {
+                    heading2ResultsUSDLabel.text = "Unknown"
+                    //Hide Unit and USD buttons
+                    currencyButtons(isHidden: true)
+
+                } else { //Show cost
                     heading2ResultsLabel.text = String(singleHardwareDetails.cost)
+                    currencyButtons(isHidden: false)
+                    //Checkig if value in exchange rate from popup, if so means user is currently switch to usd so make sure this label has usd conversion
+                    if let exchangeRateValueFromPopup = valueSentFromPopup {
+                        heading2ResultsUSDLabel.text = "\(exchangeRateValueFromPopup * Double(singleHardwareDetails.cost))"
+                    }
                 }
             TypeNameLabel.text = singleHardwareDetails.name
             label1Results.text = singleHardwareDetails.make
@@ -190,10 +214,12 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             heading4ResultsLabel.text = singleHardwareDetails.hardwareClass
             heading5ResultsLabel.text = String(singleHardwareDetails.crew)
             heading3ResultsFeetLabel.text = "\(singleHardwareDetails.lengthFeet)ft"
+            currentHardwareCostUnits = singleHardwareDetails.cost
+            sizeButtons(isHidden: false)
         }
         
     }
-    
+    //CAN THIS GO IN SEP FILE
     // Quick facts bar setup
     func quickFactsSetup(with dictionary: [String: Double]) {
         var smallest = ""
@@ -254,6 +280,53 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     //Unwind popup to Details, if exchange rate then show rate and change rate button colours
     @IBAction func unwindToDetailsFromPopup(segue: UIStoryboardSegue) {
         
+    }
+    
+    // Exchange rate popup sends data to this func, then now show this rate on screen
+    func setExchangeRate(of rate: Double, unit: Int) {
+        valueSentFromPopup = rate
+        if let valueJustSentFromPopup = valueSentFromPopup {
+            print("I am getting back: \(unit)")
+            heading2ResultsUSDLabel.text = "\(valueJustSentFromPopup * Double(unit))"
+            heading2ResultsLabel.isHidden = true
+            heading2ResultsUSDLabel.isHidden = false
+            
+        } else {
+            //no data been sent ERROR
+        }
+        
+    }
+    
+    @IBAction func setCostToCredits() {
+        creditsButtonLabel.titleLabel?.textColor = UIColor.white
+        usdButtonLabel.titleLabel?.textColor = UIColor.darkGray
+        heading2ResultsUSDLabel.isHidden = true
+        heading2ResultsLabel.isHidden = false
+    }
+    
+    
+    // Setup self as value to delegate
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let currentHardwareUnit = currentHardwareCostUnits {
+            if let popUpViewController = segue.destination as? PopupViewController {
+                popUpViewController.currentHardwareUnit = currentHardwareUnit
+                popUpViewController.delegate = self
+            }
+        } else {
+            // STOP segue and show POPUP WARNING MESSAGE THAT NO hardware selccted
+        }
+    }
+    
+    //Helper method
+    // Set USD and Credit to hidden or not hidden
+    func currencyButtons(isHidden: Bool) {
+        usdButtonLabel.isHidden = isHidden
+        creditsButtonLabel.isHidden = isHidden
+    }
+    // Set metric and English hidden or not
+    func sizeButtons(isHidden: Bool) {
+        metricLabel.isHidden = isHidden
+        englishLabel.isHidden = isHidden
     }
     
 

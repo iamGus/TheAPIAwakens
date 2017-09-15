@@ -206,21 +206,48 @@
                                                         <color key="textColor" red="0.90580290559999999" green="0.90593320129999999" blue="0.90577441449999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1y9-Ro-3UH">
-                                                        <rect key="frame" x="168" y="-2" width="46" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="USD"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1y9-Ro-3UH">
+                                                        <rect key="frame" x="181" y="-1.5" width="30" height="29"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <state key="normal" title="USD">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
                                                         <connections>
                                                             <segue destination="cJV-Y7-h5p" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Nzz-1p-3vE"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEv-gu-a68">
+                                                        <rect key="frame" x="223" y="-1.5" width="47" height="29"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <state key="normal" title="Credits">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <state key="disabled">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="setCostToCredits" destination="6bL-Gq-Tog" eventType="touchUpInside" id="2li-Ak-2zc"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTL-nD-4Vm" userLabel="Label 3 USD">
+                                                        <rect key="frame" x="83.5" y="12.5" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.90580290559999999" green="0.90593320129999999" blue="0.90577441449999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="WTL-nD-4Vm" firstAttribute="centerY" secondItem="ZoF-9b-1TJ" secondAttribute="centerY" id="1hK-7A-83q"/>
                                                     <constraint firstItem="edR-g9-ria" firstAttribute="top" secondItem="ZoF-9b-1TJ" secondAttribute="top" id="45P-wr-ol8"/>
                                                     <constraint firstItem="NbX-LX-LDX" firstAttribute="centerY" secondItem="edR-g9-ria" secondAttribute="centerY" id="5hR-yB-4Iy"/>
+                                                    <constraint firstItem="WTL-nD-4Vm" firstAttribute="leading" secondItem="edR-g9-ria" secondAttribute="trailing" constant="24" id="9ZK-AD-YQi"/>
                                                     <constraint firstItem="NbX-LX-LDX" firstAttribute="leading" secondItem="edR-g9-ria" secondAttribute="trailing" constant="24" id="OMG-J2-7SR"/>
+                                                    <constraint firstItem="1y9-Ro-3UH" firstAttribute="centerY" secondItem="ZoF-9b-1TJ" secondAttribute="centerY" id="OpR-EE-waE"/>
                                                     <constraint firstItem="edR-g9-ria" firstAttribute="leading" secondItem="ZoF-9b-1TJ" secondAttribute="leading" id="XzX-oK-wmV"/>
+                                                    <constraint firstAttribute="trailing" secondItem="nEv-gu-a68" secondAttribute="trailing" constant="8" id="bDi-J7-0aX"/>
                                                     <constraint firstAttribute="height" constant="25" id="nwL-x1-WUw"/>
+                                                    <constraint firstItem="nEv-gu-a68" firstAttribute="centerY" secondItem="ZoF-9b-1TJ" secondAttribute="centerY" id="pmJ-qe-aDa"/>
+                                                    <constraint firstItem="nEv-gu-a68" firstAttribute="leading" secondItem="1y9-Ro-3UH" secondAttribute="trailing" constant="12" id="y1F-dc-6J1"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUN-hz-ZCs" userLabel="Line">
@@ -441,9 +468,11 @@
                     </view>
                     <connections>
                         <outlet property="TypeNameLabel" destination="9jf-Eu-BKj" id="waR-bv-9Io"/>
+                        <outlet property="creditsButtonLabel" destination="nEv-gu-a68" id="hc9-20-3ie"/>
                         <outlet property="englishLabel" destination="cCj-gV-PAi" id="udB-L5-9Qx"/>
                         <outlet property="heading2Label" destination="edR-g9-ria" id="dcr-Qu-6oK"/>
                         <outlet property="heading2ResultsLabel" destination="NbX-LX-LDX" id="yYO-JY-fHL"/>
+                        <outlet property="heading2ResultsUSDLabel" destination="WTL-nD-4Vm" id="HMw-sw-RVb"/>
                         <outlet property="heading3Label" destination="P9L-1E-oP9" id="HRd-eb-6Ff"/>
                         <outlet property="heading3ResultsFeetLabel" destination="0bL-bB-Dvi" id="gkT-wH-otE"/>
                         <outlet property="heading3ResultsLabel" destination="ZGR-EB-YDL" id="tNb-si-7Bf"/>
@@ -458,6 +487,7 @@
                         <outlet property="quickFactsLargestLabel" destination="A3u-2T-WXK" id="jIr-mI-ZGg"/>
                         <outlet property="quickFactsSmallestLabel" destination="Hch-26-ntg" id="ZY6-EK-uJ9"/>
                         <outlet property="starWarsTypeLabel" destination="CcT-rN-Noh" id="hWp-ye-i4B"/>
+                        <outlet property="usdButtonLabel" destination="1y9-Ro-3UH" id="N9c-ZD-76H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vn-Lu-mjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
