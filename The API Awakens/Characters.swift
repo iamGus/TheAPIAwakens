@@ -17,19 +17,20 @@ class Characters {
     let heightMeters: Double
     var heightFeet: Double {
         let convertTometers = heightMeters * 3.2808 // convert meters to feet
-        return Double(round(100*convertTometers)/100)//round to two didgets precision
+        return Double(round(100*convertTometers)/100) // round to two didgets precision
     }
     let eyes: String
     let hair: String
     
     init(name: String, born: String, home: String, heightCm: String, eyes: String, hair: String) {
         
-      
-       let converttometers = Double(heightCm) ?? 0.0 //Try and convert string to Double otherwise value 0
-        self.heightMeters = converttometers / 100 // Convert value to meters
+      //Convert height cm to meter
+       let convertToDouble = Double(heightCm) ?? 0.0 //Try and convert string to Double otherwise value 0
+        let convertToMeters = convertToDouble / 100 // Convert value cm to meters
+        self.heightMeters = Double(round(100*convertToMeters)/100) // take away decimal 
         
-        //Changing home data from url to planet name
-        //V2 addition: note below could be done differently by calling API and storing planet so that if planet allready been called before it does not make another network request but uses already downlaoded data.
+        //Changing home from url to planet name
+        //V2 addition: note below could be done differently by calling API and storing planet data so that if planet already been called  it does not make another network request but uses already downloaded data.
         switch home {
             case "https://swapi.co/api/planets/1/": self.home = "Tatooine"
             case "https://swapi.co/api/planets/8/": self.home = "Naboo"
@@ -58,13 +59,19 @@ extension Characters: StarWarsTypes {
             static let swapiHair = "hair_color"
         }
         
+        // Check keys from json exist
         guard let swapiName = json[Key.swapiName] as? String,
         let swapiBorn = json[Key.swapiBorn] as? String,
         let swapiHome = json[Key.swapiHome] as? String,
         let swapiHeight = json[Key.swapiHeightCm] as? String,
         let swapiEyes = json[Key.swapiEyes] as? String,
-            let swapiHair = json[Key.swapiHair] as? String else {
+        let swapiHair = json[Key.swapiHair] as? String else {
                 return nil
+        }
+        
+        // Check values from json contain data
+        if swapiName == "" || swapiBorn == "" || swapiHome == "" || swapiHeight == "" || swapiEyes == "" || swapiHair == "" {
+            return nil
         }
         
         self.init(name: swapiName, born: swapiBorn, home: swapiHome, heightCm: swapiHeight, eyes: swapiEyes, hair: swapiHair)

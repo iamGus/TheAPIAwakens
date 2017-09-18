@@ -9,7 +9,7 @@
 import UIKit
 
 protocol dataEnteredDelegate {
-    func setExchangeRate(of rate: Double, unit: Int)
+    func setExchangeRate(of rate: Double, credits: Int)
 }
 
 class PopupViewController: UIViewController {
@@ -19,7 +19,7 @@ class PopupViewController: UIViewController {
     @IBOutlet weak var invalidRateLabel: UILabel!
     
     var delegate: dataEnteredDelegate?
-    var currentHardwareUnit: Int = 0 //Keep track of unit cost, default 0 as done guard let checks on details before passing to this property
+    var currentHardwareCredits: Int = 0 //Keep track of credits cost, default 0 as already done guard let checks on details before passing to this property
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,20 +33,23 @@ class PopupViewController: UIViewController {
     }
     // When submit pressed check contents of text field
     @IBAction func submitAndClosePopup(_ sender: Any) {
-        if let textField = textField.text, let textFieldIsDouble = Double(textField) {
-            print("yay its a number: \(textFieldIsDouble)")
-            delegate?.setExchangeRate(of: textFieldIsDouble, unit: currentHardwareUnit)
-            self.performSegue(withIdentifier: "unwindToDetails", sender: self)
-        } else if textField.text == "" {
-            print("Boo tahts not a number")
-            invalidRateLabel.text = "Field is empty, enter a rate"
-            invalidRateLabel.isHidden = false
+        if let textField = Double(textField.text!) {
+            // If textfield has workable data then send it to setExchange func
+            if textField > 0 {
+                delegate?.setExchangeRate(of: textField, credits: currentHardwareCredits)
+                self.performSegue(withIdentifier: "unwindToDetails", sender: self)
+            // Else check for errors
+            } else if textField == 0 {
+                invalidRateLabel.text = "You cannot have a rate of 0"
+                invalidRateLabel.isHidden = false
+            } else {
+                invalidRateLabel.text = "You cannot have a rate below 0"
+                invalidRateLabel.isHidden = false
+            }
         } else {
-            print("Boo tahts not a number")
-            invalidRateLabel.text = "Sorry invalid exchange rate"
+            invalidRateLabel.text = "Please only input numbers"
             invalidRateLabel.isHidden = false
         }
-        
         
     }
     

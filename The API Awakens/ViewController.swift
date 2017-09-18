@@ -9,10 +9,9 @@
 import UIKit
 
 
-
 class ViewController: UIViewController {
     
-    //outlets
+    // Outlets
     @IBOutlet weak var charactersLabel: UIButton!
     @IBOutlet weak var vehiclesLabel: UIButton!
     @IBOutlet weak var starshipsLabel: UIButton!
@@ -20,7 +19,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically fvar a nib.
     
     }
    

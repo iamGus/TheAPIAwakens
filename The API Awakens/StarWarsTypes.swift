@@ -8,8 +8,8 @@
 
 import Foundation
 
+// Used when calling API to pass back either a character or hardware type
 protocol StarWarsTypes {
-    
     
 }
 

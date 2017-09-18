@@ -17,8 +17,8 @@ class Hardware {
     let cost: Int
     let lengthMeters: Double
     var lengthFeet: Double {
-        let convertTometers = lengthMeters * 3.2808 // convert meters to feet
-        return Double(round(100*convertTometers)/100)//round to two didgets precision
+        let convertToFeet = lengthMeters * 3.2808 // convert meters to feet
+        return Double(round(100*convertToFeet)/100) // round to two didgets precision
     }
     let hardwareClass: String
     let crew: Int
@@ -59,6 +59,7 @@ extension Hardware: StarWarsTypes {
             }
         }
         
+        // Check values from json exist
         guard let swapiName = json[Key.swapiName] as? String,
             let swapiMake = json[Key.swapiMake] as? String,
             let swapiCost = json[Key.swapiCost] as? String,
@@ -66,6 +67,11 @@ extension Hardware: StarWarsTypes {
             let swapiCrew = json[Key.swapiCrew] as? String,
             let swapiClass = json[classType] as? String else {
                 return nil
+        }
+        
+        // Check values from json contain data
+        if swapiName == "" || swapiMake == "" || swapiCost == "" || swapiLengthM == "" || swapiCrew == "" || swapiClass == "" {
+            return nil
         }
         
         self.init(name: swapiName, type: hardwareType, make: swapiMake, cost: swapiCost, hardwareClass: swapiClass, crew: swapiCrew, lengthMeters: swapiLengthM)

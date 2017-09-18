@@ -19,12 +19,12 @@ class SwapiAPIClient {
         
         let task = downloader.jsonTask(with: endpoint.request) { json, error in
             DispatchQueue.main.async {
-                guard let json = json else { // Check if JSON nill, if it is return error
+                guard let json = json else { // Check if JSON nil, if it is return error
                     completion([], error)
                     return
                 }
                 
-                guard let results = json["results"] as? [[String: Any]] else { // Check if JSON file contains resulsts, if it does not return error
+                guard let results = json["results"] as? [[String: Any]] else { // Check if JSON file contains results, if it does not return error
                     completion([], .jsonParsingFailure(message: "JSON data does not contain results"))
                     return
                 }

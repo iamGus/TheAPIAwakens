@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Hold datasource for Starships and Vechicles
+// Hold datasource for Starships and Vehicles
 
 class HardwareDataSource {
     
@@ -38,7 +38,7 @@ class HardwareDataSource {
         return nameAndSize
     }
     
-    //Return request Hardware details from picker row number
+    //Return single Hardware details from picker row number
     func returnSingleCharacter(pickerRow row: Int) -> Hardware {
         return data[row-1] //row munis one as of array starting 0
     }

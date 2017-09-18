@@ -19,6 +19,7 @@
 		182473001F66BEF600680E3A /* SwapiAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182472FF1F66BEF600680E3A /* SwapiAPIClient.swift */; };
 		182473021F66CDAE00680E3A /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182473011F66CDAE00680E3A /* Characters.swift */; };
 		182473041F66DDB600680E3A /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182473031F66DDB600680E3A /* Hardware.swift */; };
+		186019E21F6BFCF3006376A7 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186019E11F6BFCF3006376A7 /* Helper.swift */; };
 		186DCA831F67C5EA003C1E75 /* StarWarsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DCA821F67C5E9003C1E75 /* StarWarsTypes.swift */; };
 		186DCA861F67E0C6003C1E75 /* CharactersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DCA851F67E0C6003C1E75 /* CharactersDataSource.swift */; };
 		186DCA881F67E0DA003C1E75 /* HardwareDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DCA871F67E0DA003C1E75 /* HardwareDataSource.swift */; };
@@ -40,6 +41,7 @@
 		182472FF1F66BEF600680E3A /* SwapiAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiAPIClient.swift; sourceTree = "<group>"; };
 		182473011F66CDAE00680E3A /* Characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		182473031F66DDB600680E3A /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
+		186019E11F6BFCF3006376A7 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		186DCA821F67C5E9003C1E75 /* StarWarsTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarWarsTypes.swift; sourceTree = "<group>"; };
 		186DCA851F67E0C6003C1E75 /* CharactersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersDataSource.swift; sourceTree = "<group>"; };
 		186DCA871F67E0DA003C1E75 /* HardwareDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HardwareDataSource.swift; sourceTree = "<group>"; };
@@ -79,7 +81,6 @@
 				186DCA8B1F67E9C8003C1E75 /* Controllers */,
 				182472FA1F66BA7200680E3A /* Networking */,
 				186DCA841F67E094003C1E75 /* Data Sources */,
-				186DCA8E1F67EB4B003C1E75 /* View */,
 				182472F61F669C5B00680E3A /* Models */,
 				182472E41F669AAC00680E3A /* AppDelegate.swift */,
 				182472E81F669AAD00680E3A /* Main.storyboard */,
@@ -126,15 +127,9 @@
 				182472E61F669AAC00680E3A /* ViewController.swift */,
 				186DCA891F67E706003C1E75 /* DetailsViewController.swift */,
 				1816293B1F6ADB61003A7483 /* PopupViewController.swift */,
+				186019E11F6BFCF3006376A7 /* Helper.swift */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		186DCA8E1F67EB4B003C1E75 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				182473001F66BEF600680E3A /* SwapiAPIClient.swift in Sources */,
+				186019E21F6BFCF3006376A7 /* Helper.swift in Sources */,
 				186DCA881F67E0DA003C1E75 /* HardwareDataSource.swift in Sources */,
 				182473021F66CDAE00680E3A /* Characters.swift in Sources */,
 				182472FC1F66BA8900680E3A /* JSONDownloader.swift in Sources */,

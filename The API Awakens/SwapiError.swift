@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Network errors
+
 enum SwapiError: Error {
     case requestFailed
     case responseUnsuccessful

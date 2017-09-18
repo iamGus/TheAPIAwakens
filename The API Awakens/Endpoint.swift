@@ -8,6 +8,8 @@
 
 import Foundation
 
+//Endpoint to conform to SWAPI URL structure
+
 protocol Endpoint {
     var base: String { get }
     var path: String { get }
@@ -48,7 +50,7 @@ extension StarWarsEndpoint: Endpoint {
         return "swapi.co"  // Base root url
     }
     
-    // Three possible recources
+    // Three possible resources
     var path: String {
         switch self {
         case .character: return "/api/people/"

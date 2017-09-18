@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Hold dataSource for lifefoms and robots!
+// Hold dataSource for lifeforms and robots!
 
 class CharactersDataSource {
     
@@ -37,7 +37,7 @@ class CharactersDataSource {
         return nameAndSize
     }
     
-    //Return request Character details from picker row number
+    //Return single Character details from picker row number
     func returnSingleCharacter(pickerRow row: Int) -> Characters {
         return data[row-1] //row munis one as of array starting 0
     }
