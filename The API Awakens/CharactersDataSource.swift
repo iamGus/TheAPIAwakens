@@ -18,6 +18,7 @@ class CharactersDataSource {
     func update(with characters: [Characters]) {
         data = characters
     }
+
     
     // Return string of names for picker
     func returnArrayForPicker() -> [String] {

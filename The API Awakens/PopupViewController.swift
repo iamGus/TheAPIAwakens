@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol dataEnteredDelegate {
+protocol dataEnteredDelegate: class {
     func setExchangeRate(of rate: Double, credits: Int)
 }
 
@@ -18,7 +18,7 @@ class PopupViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var invalidRateLabel: UILabel!
     
-    var delegate: dataEnteredDelegate?
+    weak var delegate: dataEnteredDelegate?
     var currentHardwareCredits: Int = 0 //Keep track of credits cost, default 0 as already done guard let checks on details before passing to this property
     
     override func viewDidLoad() {

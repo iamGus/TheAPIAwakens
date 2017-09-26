@@ -13,7 +13,8 @@ import Foundation
 class Characters {
     let name: String
     let born: String
-    let home: String
+    let homeUrl: URLRequest
+    var homeName: String = "Unknown"
     let heightMeters: Double
     var heightFeet: Double {
         let convertTometers = heightMeters * 3.2808 // convert meters to feet
@@ -22,23 +23,15 @@ class Characters {
     let eyes: String
     let hair: String
     
-    init(name: String, born: String, home: String, heightCm: String, eyes: String, hair: String) {
+    init(name: String, born: String, homeUrl: URL, heightCm: String, eyes: String, hair: String) {
         
       //Convert height cm to meter
        let convertToDouble = Double(heightCm) ?? 0.0 //Try and convert string to Double otherwise value 0
         let convertToMeters = convertToDouble / 100 // Convert value cm to meters
         self.heightMeters = Double(round(100*convertToMeters)/100) // take away decimal 
         
-        //Changing home from url to planet name
-        //V2 addition: note below could be done differently by calling API and storing planet data so that if planet already been called  it does not make another network request but uses already downloaded data.
-        switch home {
-            case "https://swapi.co/api/planets/1/": self.home = "Tatooine"
-            case "https://swapi.co/api/planets/8/": self.home = "Naboo"
-            case "https://swapi.co/api/planets/2/": self.home = "Alderaan"
-            case "https://swapi.co/api/planets/20/": self.home = "Stewjon"
-            default: self.home = "Unknown"
-        }
-        
+      
+        self.homeUrl = URLRequest(url: homeUrl)
         self.name = name
         self.born = born
         self.eyes = eyes
@@ -74,7 +67,12 @@ extension Characters: StarWarsTypes {
             return nil
         }
         
-        self.init(name: swapiName, born: swapiBorn, home: swapiHome, heightCm: swapiHeight, eyes: swapiEyes, hair: swapiHair)
+        // Check that string of planet url can be converted to URL
+        guard let homeUrl = URL(string: swapiHome) else {
+        return nil
+        }
+        
+        self.init(name: swapiName, born: swapiBorn, homeUrl: homeUrl, heightCm: swapiHeight, eyes: swapiEyes, hair: swapiHair)
     }
 }
 

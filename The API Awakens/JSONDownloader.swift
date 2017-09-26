@@ -50,4 +50,5 @@ class JSONDownloader {
             print(task)
             return task
     }
+
 }

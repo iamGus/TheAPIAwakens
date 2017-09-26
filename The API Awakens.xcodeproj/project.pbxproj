@@ -19,6 +19,7 @@
 		182473001F66BEF600680E3A /* SwapiAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182472FF1F66BEF600680E3A /* SwapiAPIClient.swift */; };
 		182473021F66CDAE00680E3A /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182473011F66CDAE00680E3A /* Characters.swift */; };
 		182473041F66DDB600680E3A /* Hardware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182473031F66DDB600680E3A /* Hardware.swift */; };
+		182A53EC1F79500500321EDB /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A53EB1F79500500321EDB /* Planet.swift */; };
 		186019E21F6BFCF3006376A7 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186019E11F6BFCF3006376A7 /* Helper.swift */; };
 		186DCA831F67C5EA003C1E75 /* StarWarsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DCA821F67C5E9003C1E75 /* StarWarsTypes.swift */; };
 		186DCA861F67E0C6003C1E75 /* CharactersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186DCA851F67E0C6003C1E75 /* CharactersDataSource.swift */; };
@@ -41,6 +42,7 @@
 		182472FF1F66BEF600680E3A /* SwapiAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwapiAPIClient.swift; sourceTree = "<group>"; };
 		182473011F66CDAE00680E3A /* Characters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		182473031F66DDB600680E3A /* Hardware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hardware.swift; sourceTree = "<group>"; };
+		182A53EB1F79500500321EDB /* Planet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		186019E11F6BFCF3006376A7 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		186DCA821F67C5E9003C1E75 /* StarWarsTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarWarsTypes.swift; sourceTree = "<group>"; };
 		186DCA851F67E0C6003C1E75 /* CharactersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersDataSource.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				186DCA821F67C5E9003C1E75 /* StarWarsTypes.swift */,
 				182473011F66CDAE00680E3A /* Characters.swift */,
 				182473031F66DDB600680E3A /* Hardware.swift */,
+				182A53EB1F79500500321EDB /* Planet.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				186DCA861F67E0C6003C1E75 /* CharactersDataSource.swift in Sources */,
 				186DCA831F67C5EA003C1E75 /* StarWarsTypes.swift in Sources */,
 				182472F91F669C9300680E3A /* Endpoint.swift in Sources */,
+				182A53EC1F79500500321EDB /* Planet.swift in Sources */,
 				182472FE1F66BB9800680E3A /* SwapiError.swift in Sources */,
 				182472E51F669AAC00680E3A /* AppDelegate.swift in Sources */,
 				182473041F66DDB600680E3A /* Hardware.swift in Sources */,

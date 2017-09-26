@@ -96,6 +96,7 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
                 // Set Character Datasource
                 } else if let starWarsCharacters = starWarsType as? [Characters] {
                     self?.charactersDataSource.update(with: starWarsCharacters)
+                    
                     self?.charactersSetups()
                    
                 } else {
@@ -180,7 +181,7 @@ class DetailsViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             let singleCharacterDetails = charactersDataSource.returnSingleCharacter(pickerRow: row)
             TypeNameLabel.text = singleCharacterDetails.name
             label1Results.text = singleCharacterDetails.born
-            heading2ResultsLabel.text = singleCharacterDetails.home
+            heading2ResultsLabel.text = singleCharacterDetails.homeName
             heading3ResultsLabel.text = "\(singleCharacterDetails.heightMeters)m"
             heading4ResultsLabel.text = singleCharacterDetails.eyes
             heading5ResultsLabel.text = singleCharacterDetails.hair
