@@ -38,6 +38,9 @@ class SwapiAPIClient {
                     // A much better way might be to try and use operations and operation queues.
                     for eachCharacter in starwarsType {
                         
+                        //Code in here to lower the amount of requests so that characters with same planet get lcoal stored name instead of duplicate request
+                       
+                        
                         let planetTask = self.downloader.jsonTask(with: eachCharacter.homeUrl) { json, error in
                             DispatchQueue.main.async {
                                 guard let json = json else { // Check if JSON nil, if it is return error
