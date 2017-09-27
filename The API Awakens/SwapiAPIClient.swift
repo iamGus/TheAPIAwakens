@@ -36,11 +36,20 @@ class SwapiAPIClient {
                     // Get Planet name: To get planet data from swapi for each character
                     // Note: I wanted to see if this way was possible which it is but I don't think this is the best way of retrieving the planet name due to calling a new network request over a for loop.
                     // A much better way might be to try and use operations and operation queues.
+                    var tempPlanetStore = [URLRequest: String]()
                     for eachCharacter in starwarsType {
                         
+                        //Code not yet working correctlly
                         //Code in here to lower the amount of requests so that characters with same planet get lcoal stored name instead of duplicate request
                        
+                        print(tempPlanetStore)
+    
+                        if let alreadyKnowPlanet = tempPlanetStore[eachCharacter.homeUrl] {
+                            eachCharacter.homeName = alreadyKnowPlanet
+                            return
+                        } //else {
                         
+                       
                         let planetTask = self.downloader.jsonTask(with: eachCharacter.homeUrl) { json, error in
                             DispatchQueue.main.async {
                                 guard let json = json else { // Check if JSON nil, if it is return error
@@ -51,11 +60,17 @@ class SwapiAPIClient {
                                     completion([], .jsonParsingFailure(message: "JSON data does not contain results"))
                                     return
                                 }
+                                tempPlanetStore.updateValue(planetName, forKey: eachCharacter.homeUrl)
+                                tempPlanetStore[eachCharacter.homeUrl] = "\(planetName)"
+                                print("just added \(planetName) into tempPlanetStore")
                                 eachCharacter.homeName = planetName // add planet name to each Star Wars Character
-                                
                         }
+                            
+                            
                     }
+                        
                         planetTask.resume()
+          //          }
                     }
                     completion(starwarsType, nil)
                 } else { // else type will be . starship or .vehicles so init Json through Hardware class
